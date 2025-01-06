@@ -1,9 +1,9 @@
 const inverse =
-  f =>
+  (f) =>
   (...args) =>
     1 - f(...args);
 
-export const constantly = x => () => x;
+export const constantly = (x) => () => x;
 export const zig = (r, c) => c;
 export const zag = (r, c) => r;
 export const classicAlternate = (r, c) => r + c;
@@ -35,9 +35,12 @@ export const circle = (r, c, w, h) => {
 
 export const borderLands = (r, c, w, h) => {
   if (c >= w / 2) {
-    return Math.random() > 0.9 ? 1 : 0;
+    return r % 2;
   }
-  return Math.random() > 0.1 ? (r + c) % 2 : 0;
+  return c % 2;
+  //   return Math.random() > 0.9 ? 1 : 0;
+  // }
+  // return Math.random() > 0.1 ? (r + c) % 2 : 0;
 };
 
 export const gradually = (r, c, w, h) => {
@@ -56,7 +59,6 @@ export const leftRight = (left, right) => (r, c, w, h) =>
 export const topBottom = (top, bottom) => (r, c, w, h) =>
   r < h / 2 ? top(r, c, w, h) : bottom(r, c, w, h);
 
-export const wild =
-  (f, cfg) =>
+export const wild =(f, cfg) =>
   (...args) =>
     cfg[f(...args) % cfg.length];

@@ -1,6 +1,8 @@
 export const defaultTileSet = [
-  ['/ ', ' /'],
-  [' \\', '\\ '],
+  [" *", "* "],
+  ["  ", "  "],
+  // [1, 2],
+  // [3, 4],
 ];
 
 const concatLines = (lines1, lines2) =>
@@ -14,7 +16,7 @@ export const generateTiles = (
 ) => {
   const lines = [];
   for (let row = 0; row < height; row++) {
-    let tileLines = Array.from(tileSet[0]).fill('');
+    let tileLines = Array.from(tileSet[0]).fill("");
     for (let col = 0; col < width; col++) {
       const tile = tileGenerator(row, col, width, height);
       const tileId = tile % tileSet.length;
@@ -22,5 +24,5 @@ export const generateTiles = (
     }
     lines.push(...tileLines);
   }
-  return lines.join('\n');
+  return lines.join("\n");
 };
